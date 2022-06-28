@@ -12,7 +12,7 @@ function addElement({ name, url }) {
             <span> ${nameValue}</span>
             <a href="${urlValue}">${urlValue}</a>
             <div>
-                <button class="btnRemove">
+                <button class="btnRemove" onclick=removeElement()>
                     <i class="fa fa-trash"></i>
                 </button>
             </div>
@@ -22,15 +22,15 @@ function addElement({ name, url }) {
     
 }
 
-function removeElement(element) {
-    const close = document.querySelectorAll('btnRemove');
+function removeElement() {
+    const close = document.getElementsByClassName('btnRemove')
     for(let i=0; i<close.length; i++){
         close[i].addEventListener('click',()=>{
             close[i].parentElement.style.opacity = 0;
             setTimeout(()=>{
-                close[i].parentElement.style.display="none";
-            },500);
-        })
+                close[i].parentElement.parentElement.style.display="none";
+            });
+        }, 500)
     }
     input.value = ''
 }
@@ -43,7 +43,7 @@ form.addEventListener('submit', (event) => {
     if (!value) 
         return alert('Preencha o campo!')
 
-    const [name, url] = value.split(',')
+    const [name, url] = value.split(' ')
 
     if (!url) 
         return alert('O texto não está formatado da maneira correta.')
