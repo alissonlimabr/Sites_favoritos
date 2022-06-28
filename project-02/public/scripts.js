@@ -12,13 +12,14 @@ function addElement({ name, url }) {
             <span> ${nameValue}</span>
             <a href="${urlValue}">${urlValue}</a>
             <div>
-                <button class="btnRemove" onclick=removeElement()>
+                <button class="btnRemove">
                     <i class="fa fa-trash"></i>
                 </button>
             </div>
         </li>`
 
     document.getElementById("listaFavoritos").innerHTML = li;
+    removeElement()
     
 }
 
