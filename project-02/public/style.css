@@ -24,6 +24,13 @@ body{
     justify-content: space-between;
     
 }
+.title-container{
+    text-align: center;
+    padding-top: 10px;
+    color: #d28316;
+    font-style:oblique;
+    font-family:'Courier New', Courier, monospace;
+}
 
 .fav input{
     width: 350px;

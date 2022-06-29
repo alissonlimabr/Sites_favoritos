@@ -1,25 +1,62 @@
-const ul = document.querySelector('ul')
-const input = document.querySelector('input')
-const form = document.querySelector('form')
+const ul = document.getElementById("listaFavoritos")
+const input = document.getElementById("inputFav")
+const form = document.getElementById("formFav")
+const idItem = document.getElementsByTagName("span")
+const nomeItem = document.getElementsByTagName("span")
+const nomelink = document.getElementsByTagName("a")
+const divBtnRmv = document.getElementsByTagName("div")
+const buton = document.getElementsByTagName("button")
+const iconRmv = document.getElementsByTagName("i")
+let aux = 0;
+
+var tarefas = []
+
 
 function addElement({ name, url }) {
-    const nameValue = name;
-    const urlValue = url;
+    var li = document.createElement("li")
+    var cabeçalho = document.createElement("span")
+    var link = document.createElement("a")
+    var divBtn = document.createElement("div")
+    var botao = document.createElement("button")
+    var iconeRmv = document.createElement("i")
+    var iditem = document.createElement("span")
 
-    let li = document.getElementById("listaFavoritos").innerHTML;
+    link.href = url
+    link.innerHTML = url
 
-            li += `<li>
-            <span> ${nameValue}</span>
-            <a href="${urlValue}">${urlValue}</a>
-            <div>
-                <button class="btnRemove">
-                    <i class="fa fa-trash"></i>
-                </button>
-            </div>
-        </li>`
+    botao.className = "btnRemove"
+    iconeRmv.className = "fa fa-trash"
+    
+    botao.appendChild(iconeRmv)
+    divBtn.appendChild(botao)
+    iditem.appendChild(document.createTextNode(aux+1))
+    cabeçalho.appendChild(document.createTextNode(name))
+    li.appendChild(iditem)
+    li.appendChild(cabeçalho)
+    li.appendChild(link)
+    li.appendChild(divBtn)
 
-    document.getElementById("listaFavoritos").innerHTML = li;
+    ul.appendChild(li)  
+    input.value = ''
+
     removeElement()
+    aux++
+
+    //anteriormente
+    // let li = document.getElementById("listaFavoritos").innerHTML;
+
+    //         li += `<li>
+    //         <span> ${nameValue}</span>
+    //         <a href="${urlValue}">${urlValue}</a>
+    //         <div>
+    //             <button class="btnRemove">
+    //                 <i class="fa fa-trash"></i>
+    //             </button>
+    //         </div>
+    //     </li>`
+
+    // document.getElementById("listaFavoritos").innerHTML = li;
+
     
 }
 
@@ -34,6 +71,7 @@ function removeElement() {
         }, 500)
     }
     input.value = ''
+    setItem()
 }
 
 form.addEventListener('submit', (event) => {
