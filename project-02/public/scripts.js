@@ -30,6 +30,7 @@ function addElement({ name, url }) {
     botao.appendChild(iconeRmv)
     divBtn.appendChild(botao)
     iditem.appendChild(document.createTextNode(aux+1))
+    aux++
     cabeçalho.appendChild(document.createTextNode(name))
     li.appendChild(iditem)
     li.appendChild(cabeçalho)
@@ -40,7 +41,6 @@ function addElement({ name, url }) {
     input.value = ''
 
     removeElement()
-    aux++
 
     //anteriormente
     // let li = document.getElementById("listaFavoritos").innerHTML;
